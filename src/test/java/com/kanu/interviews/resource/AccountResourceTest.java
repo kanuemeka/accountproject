@@ -33,7 +33,7 @@ public class AccountResourceTest {
     }
 
     @Test
-    public void shouldReturnResponseWithListOfNumberedAccounts(){
+    public void getAllAccountsShouldReturnResponseWithListOfNumberedAccounts(){
         //GIVEN
         int numOfAccounts=4;
         when(accountRepository.getAllAccounts()).thenReturn(buildList(numOfAccounts));
@@ -43,11 +43,28 @@ public class AccountResourceTest {
 
         //THEN
         assertNotNull(actualResponse);
+        assertEquals(200, actualResponse.getStatus());
         assertNotNull(actualResponse.getEntity());
 
         List<Account> returnedAccounts = (List<Account>) actualResponse.getEntity();
 
         assertEquals(numOfAccounts, returnedAccounts.size());
+    }
+
+    @Test
+    public void postAccountShouldReturnSuccessMessage(){
+        // GIVEN
+        Account testAccount
+                = Account.builder().firstName("firstname").secondName("secondName")
+                .accountNumber("1234").build();
+
+        //WHEN
+        Response actualResponse = accountResource.saveAccount(testAccount);
+
+        // THEN
+        assertNotNull("Null Response Received", actualResponse);
+        assertEquals(200, actualResponse.getStatus());
+        assertNotNull(actualResponse.getEntity());
     }
 
     private List<Account> buildList(int numberOfItems){

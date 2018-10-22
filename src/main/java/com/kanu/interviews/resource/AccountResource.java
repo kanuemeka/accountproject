@@ -1,5 +1,6 @@
 package com.kanu.interviews.resource;
 
+import com.kanu.interviews.model.Account;
 import com.kanu.interviews.repository.AccountRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,5 +19,9 @@ public class AccountResource {
 
     public Response getAllAccounts(){
         return Response.ok(accountRepository.getAllAccounts()).build();
+    }
+
+    public Response saveAccount(Account testAccount) {
+        return null;
     }
 }
