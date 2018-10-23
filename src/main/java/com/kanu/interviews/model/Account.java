@@ -1,10 +1,12 @@
 package com.kanu.interviews.model;
 
-import lombok.Builder;
-import lombok.Getter;
+import lombok.*;
 
 @Getter
+@Setter
 @Builder
+@NoArgsConstructor
+@AllArgsConstructor
 public class Account {
 
     private int id;
