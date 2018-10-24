@@ -12,7 +12,7 @@ public class AccountRepository {
 
     public static Predicate<Account> isMatchingId(Integer id)
     {
-        return p -> p.getId() > id;
+        return p -> p.getId() == id;
     }
 
     private List<Account>accountsList;
